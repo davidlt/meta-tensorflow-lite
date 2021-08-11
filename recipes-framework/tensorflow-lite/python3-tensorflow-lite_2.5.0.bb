@@ -16,7 +16,7 @@ SRC_URI = " \
     file://update-google-ruy-gcc11-fix.patch \
 "
 
-SRC_URI_append_riscv64 += " \
+SRC_URI:append:riscv64 += " \
     file://link-atomic-lib.patch \
 "
 
@@ -33,7 +33,7 @@ DEPENDS += "gzip-native \
             python3-pybind11 \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     python3 \
     python3-numpy \
     python3-pybind11 \
@@ -119,7 +119,7 @@ do_install() {
     ${S}/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-${DPV}-*.whl
 }
 
-FILES_${PN}-dev = ""
-INSANE_SKIP_${PN} += "dev-so \
+FILES:${PN}-dev = ""
+INSANE_SKIP:${PN} += "dev-so \
                      "
-FILES_${PN} += "${libdir}/* ${datadir}/*"
+FILES:${PN} += "${libdir}/* ${datadir}/*"

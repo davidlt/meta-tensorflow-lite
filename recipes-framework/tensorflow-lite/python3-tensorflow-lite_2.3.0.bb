@@ -24,7 +24,7 @@ DEPENDS += "gzip-native \
             python3-pybind11 \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     python3 \
     python3-numpy \
     python3-pybind11 \
@@ -65,7 +65,7 @@ do_install() {
         ${S}/tensorflow/lite/tools/pip_package/gen/tflite_pip${WORKDIR}/recipe-sysroot-native/usr/bin/python3-native/python3/dist/tflite_runtime-2.3.0rc1-*.whl
 }
 
-FILES_${PN}-dev = ""
-INSANE_SKIP_${PN} += "dev-so \
+FILES:${PN}-dev = ""
+INSANE_SKIP:${PN} += "dev-so \
                      "
-FILES_${PN} += "${libdir}/* ${datadir}/*"
+FILES:${PN} += "${libdir}/* ${datadir}/*"
