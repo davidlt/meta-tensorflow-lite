@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=64a34301f8e355f57ec992c2af3e5157"
 SRCREV = "fcc4b966f1265f466e82617020af93670141b009"
 
 SRC_URI = " \
-    git://github.com/tensorflow/tensorflow.git;branch=r2.3 \
+    git://github.com/tensorflow/tensorflow.git;branch=r2.3;protocol=https \
     file://001-Change-curl-to-wget-command.patch \
     file://001-TensorFlow-Lite_Makefile.patch \
     file://001-Remove-toolchain-setup-and-pybind11.patch \

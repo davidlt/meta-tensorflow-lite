@@ -9,7 +9,7 @@ DPV = "${@'.'.join(d.getVar('PV').split('.')[0:3])}"
 SRCREV = "v${PV}"
 
 SRC_URI = " \
-    git://github.com/tensorflow/tensorflow.git;branch=r${BPV} \
+    git://github.com/tensorflow/tensorflow.git;branch=r${BPV};protocol=https \
     file://001-v2.7-Fix-the-xnnpack-by-default-logic-for-Python.patch \
     file://001-v2.7-Disable-XNNPACKPack-CMakeFile.patch \
 "
