@@ -31,7 +31,7 @@ $ bitbake-layers add-layer ../meta-tensorflow-lite/
 
 # Add the package to 'conf/local.conf' file. 
   MACHINE ?= "raspberrypi4-64"
-  IMAGE_INSTALL_append = " python3-tensorflow-lite"
+  IMAGE_INSTALL:append = " python3-tensorflow-lite"
 
 # Build
 $ bitbake core-image-weston

@@ -14,7 +14,7 @@ SRC_URI = " \
     file://001-v2.7-Disable-XNNPACKPack-CMakeFile.patch \
 "
 
-SRC_URI_append_riscv64 += " \
+SRC_URI:append:riscv64 = " \
     file://link-atomic-lib.patch \
 "
 
@@ -32,7 +32,7 @@ DEPENDS += "gzip-native \
             python3-pybind11 \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     python3 \
     python3-numpy \
     python3-pybind11 \
@@ -65,7 +65,7 @@ EXTRA_OECMAKE:raspberrypi4 += "-DTFLITE_ENABLE_XNNPACK=ON"
 TUNE_CCARGS:raspberrypi4-64 = ""
 EXTRA_OECMAKE:raspberrypi4-64 += "-DTFLITE_ENABLE_XNNPACK=ON"
 
-do_compile_prepend() {
+do_compile:prepend() {
     TENSORFLOW_VERSION=$(grep "_VERSION = " "${S}/tensorflow/tools/pip_package/setup.py" | cut -d= -f2 | sed "s/[ '-]//g")
     export PACKAGE_VERSION="${TENSORFLOW_VERSION}"
 
@@ -83,7 +83,7 @@ do_compile_prepend() {
     echo "__git_version__ = '$(git -C "${S}" describe)'" >> "${TENSORFLOW_LITE_BUILD_DIR}/tflite_runtime/__init__.py"
 }
 
-do_compile_append() {
+do_compile:append() {
     cp "${B}/_pywrap_tensorflow_interpreter_wrapper.so" \
         "${TENSORFLOW_LITE_BUILD_DIR}/tflite_runtime"
 
@@ -137,7 +137,7 @@ do_install() {
     ${S}/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-${DPV}-*.whl
 }
 
-FILES_${PN}-dev = ""
-INSANE_SKIP_${PN} += "dev-so \
+FILES:${PN}-dev = ""
+INSANE_SKIP:${PN} += "dev-so \
                      "
-FILES_${PN} += "${libdir}/* ${datadir}/*"
+FILES:${PN} += "${libdir}/* ${datadir}/*"
