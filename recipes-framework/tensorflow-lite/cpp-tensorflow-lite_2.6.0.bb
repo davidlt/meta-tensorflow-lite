@@ -86,8 +86,8 @@ do_install() {
     install -m 644 ${B}/flatbuffers/include/flatbuffers/*.h ${D}${includedir}/flatbuffers
 }
 
-FILES_${PN}-dev = ""
+FILES:${PN}-dev = ""
 
-INSANE_SKIP_${PN} = "dev-so"
-INSANE_SKIP_${PN}-dev += "dev-elf"
-FILES_${PN} += "${libdir}/* ${includedir}/*"
+INSANE_SKIP:${PN} = "dev-so"
+INSANE_SKIP:${PN}-dev += "dev-elf"
+FILES:${PN} += "${libdir}/* ${includedir}/*"
